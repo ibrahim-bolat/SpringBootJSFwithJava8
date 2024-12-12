@@ -41,6 +41,16 @@
                     </h:inputText>
                 </div>
             </div>
+            <div class="form-group">
+                <h:outputLabel for="productionDate-id" class="control-label col-lg-6 offset-lg-3">Production Date:</h:outputLabel>
+                <div class="col-lg-6 offset-lg-3">
+                    <h:inputText id="productionDate-id" value="#{productBean.product.productionDate}" class="form-control"
+                                 validatorMessage="Production Date is required">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        <f:validateRequired/>
+                    </h:inputText>
+                </div>
+            </div>
             <div class="form-group mt-3">
                 <div class="row">
                     <div class="col-sm-3 offset-sm-3">

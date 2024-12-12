@@ -1,8 +1,11 @@
 package org.example;
 
 
+import com.sun.faces.config.ConfigureListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
@@ -21,5 +24,16 @@ public class SpringBootJSFwithJava8 extends SpringBootServletInitializer {
         FacesServlet facesServlet = new FacesServlet();
         ServletRegistrationBean<FacesServlet> registration = new ServletRegistrationBean(facesServlet, "*.xhtml" );
         return registration;
+    }
+    @Bean
+    public ServletContextInitializer servletContextInitializer() {
+        return servletContext -> {
+            servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
+        };
+    }
+
+    @Bean
+    public ServletListenerRegistrationBean<ConfigureListener> jsfConfigureListener() {
+        return new ServletListenerRegistrationBean<>(new ConfigureListener());
     }
 }

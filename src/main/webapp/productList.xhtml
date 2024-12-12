@@ -36,6 +36,12 @@
                     <h:outputText value="#{product.price}"/>
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Product ProductionDate</f:facet>
+                    <h:outputText value="#{product.productionDate}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
                     <f:facet name="header">Update</f:facet>
                     <h:commandButton action="#{productBean.editProduct(product.id)}" value="Update"
                                      class="btn btn-primary"/>
