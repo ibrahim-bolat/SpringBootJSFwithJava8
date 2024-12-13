@@ -23,12 +23,14 @@ public class SpringBootJSFwithJava8 extends SpringBootServletInitializer {
     public ServletRegistrationBean facesServletRegistraiton() {
         FacesServlet facesServlet = new FacesServlet();
         ServletRegistrationBean<FacesServlet> registration = new ServletRegistrationBean(facesServlet, "*.xhtml" );
+        registration.setLoadOnStartup(1);
         return registration;
     }
     @Bean
     public ServletContextInitializer servletContextInitializer() {
         return servletContext -> {
             servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
+            servletContext.setInitParameter("javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE", Boolean.TRUE.toString());
         };
     }
 
