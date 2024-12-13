@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import javax.faces.webapp.FacesServlet;
 
+
 @SpringBootApplication
 public class SpringBootJSFwithJava8 extends SpringBootServletInitializer {
 
